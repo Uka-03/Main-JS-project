@@ -58,6 +58,11 @@ function playRound(playerSelection, computerSelection) {
 function game() {
     for (let i = 0; i < 5; i++) {
         let playerSelection = playerPlay();
+        if (!playerPlay.includes(playerSelection)){
+            alert("Wrong chose between rock,paper or scissors");
+            i--;
+            continue;
+        }
         let computerSelection = computerPlay();
         console.log("**Computer choose: " + computerSelection + "\n**You choose: " + playerSelection);
         let returned = playRound(playerSelection, computerSelection);
