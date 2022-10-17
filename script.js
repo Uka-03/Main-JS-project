@@ -14,23 +14,16 @@ function playerPlay() {
     return playerSelection.toLowerCase();
 }
 
-let computerScore = 0;
 let playerScore = 0;
+let computerScore = 0;
+
 
 function playRound(playerSelection, computerSelection) {
     if (playerSelection == computerSelection) {
-        return "It is equality";
+        return "It is a tie";
     }
-    if (playerSelection == "paper") {
 
-        if (computerSelection == "rock") {
-            playerScore++;
-            return "You Win! Paper beats Rock";
-        } else if (computerSelection == "scissors") {
-            computerScore++;
-            return "You Lose! Scissors beats Paper";
-        }
-    }
+
     if (playerSelection == "rock") {
 
         if (computerSelection == "scissors") {
@@ -41,6 +34,18 @@ function playRound(playerSelection, computerSelection) {
             return "You Lose! Paper beats Rock";
         }
     }
+
+    if (playerSelection == "paper") {
+
+        if (computerSelection == "rock") {
+            playerScore++;
+            return "You Win! Paper beats Rock";
+        } else if (computerSelection == "scissors") {
+            computerScore++;
+            return "You Lose! Scissors beats Paper";
+        }
+    }
+
     if (playerSelection == "scissors") {
 
         if (computerSelection == "paper") {
@@ -51,15 +56,16 @@ function playRound(playerSelection, computerSelection) {
             return "You Lose! Rock beats Scissors";
         }
     } else {
-        return "Wrong input! Please choose among Rock, Paper, Scissors"
+        return "Wrong input! please choose among Rock, Paper, Scissors"
     }
 }
 
 function game() {
     for (let i = 0; i < 5; i++) {
+        const playerOptions = ["rock", "paper", "scissors"];
         let playerSelection = playerPlay();
-        if (!playerPlay.includes(playerSelection)){
-            alert("Wrong chose between rock,paper or scissors");
+        if (!playerOptions.includes(playerSelection)) {
+            alert("Please choose among Rock, Paper, Scissors");
             i--;
             continue;
         }
@@ -71,13 +77,13 @@ function game() {
 
     if (playerScore == computerScore) {
         console.log("Player score: " + playerScore + "\nComputer score: " + computerScore
-            + "\nThe Game is at equality");
+            + "\nThe Game is tie");
     } else if (playerScore > computerScore) {
         console.log("Player score: " + playerScore + "\nComputer score: " + computerScore
-            + "\n You are the winner");
+            + "\n You Win! The Game");
     } else if (computerScore > playerScore) {
         console.log("Player score: " + playerScore + "\nComputer score: " + computerScore
-            + "\nComputer is the winner");
+            + "\nComputer Wins! The Game");
     }
 }
 
